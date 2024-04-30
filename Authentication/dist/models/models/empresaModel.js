@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = __importDefault(require("sequelize"));
 const config_1 = __importDefault(require("../../database/config"));
-exports.default = config_1.default.define('empresa', {
-    id: {
+exports.default = config_1.default.define('empresas', {
+    codigo: {
         type: sequelize_1.default.STRING(255),
         primaryKey: true,
         allowNull: false,
@@ -21,7 +21,7 @@ exports.default = config_1.default.define('empresa', {
         allowNull: false
     },
     cnpj: {
-        type: sequelize_1.default.INTEGER,
+        type: sequelize_1.default.STRING(14),
         allowNull: false
     },
     contato: {

@@ -8,7 +8,8 @@ const dbPassword = process.env.DB_PASSWORD;
 const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
     dialect: 'mysql',
     host: dbHost,
-    logging: false    
+    logging: false,
+    timezone: 'America/Sao_Paulo' // Define o fuso horário para 'America/Sao_Paulo'
 });
 
 export default sequelize;

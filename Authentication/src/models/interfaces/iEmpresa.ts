@@ -1,8 +1,8 @@
 export interface iEmpresa{
-    id?: string,
+    codigo?: string,
     razaoSocial: string,
     fantasia: string,
-    cnpj: number,
+    cnpj: string,
     contato: string,
     ie: number,
     rua: string,

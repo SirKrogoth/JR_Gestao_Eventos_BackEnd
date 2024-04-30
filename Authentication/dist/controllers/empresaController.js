@@ -14,13 +14,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const http_status_codes_1 = require("http-status-codes");
 const empresaRepository_1 = __importDefault(require("../models/repository/empresaRepository"));
+const uuid_1 = require("uuid");
 function add(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const empresa = req.body;
+            empresa.codigo = (0, uuid_1.v4)();
             const result = yield empresaRepository_1.default.add(empresa);
-            empresa.id = result.id;
-            res.status(http_status_codes_1.StatusCodes.OK).json(empresa);
+            res.status(http_status_codes_1.StatusCodes.OK).json(result);
         }
         catch (error) {
             console.log(error);
