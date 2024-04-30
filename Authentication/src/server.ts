@@ -1,8 +1,5 @@
 import app from "./app";
-import test from 'express';
 import database from './database/config';
-
-const appp = test();
 
 (async () =>{
     try {
