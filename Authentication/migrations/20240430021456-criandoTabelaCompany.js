@@ -10,7 +10,11 @@ module.exports = {
         autoIncrement: false,
         allowNull: false
       },
-      descricao: {
+      razaoSocial: {
+        type: Sequelize.DataTypes.STRING(255),
+        allowNull: false
+      },
+      fantasia: {
         type: Sequelize.DataTypes.STRING(255),
         allowNull: false
       },

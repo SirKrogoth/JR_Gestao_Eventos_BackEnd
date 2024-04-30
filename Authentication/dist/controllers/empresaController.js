@@ -12,18 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
-const config_1 = __importDefault(require("./database/config"));
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const port = parseInt(`${process.env.PORT}`);
-        yield config_1.default.sync();
-        console.log(`The Database is running in ${process.env.DB_NAME}...`);
-        app_1.default.listen(port, () => {
-            console.log(`The API Authentication is running on port ${port}...`);
-        });
-    }
-    catch (error) {
-        console.error('Fail to connect database, contact the administrator and show the message. Message: ' + error);
-    }
-}))();
+const http_status_codes_1 = require("http-status-codes");
+const empresaRepository_1 = __importDefault(require("../models/repository/empresaRepository"));
+function add(req, res, next) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const empresa = req.body;
+            const result = yield empresaRepository_1.default.add(empresa);
+            empresa.id = result.id;
+            res.status(http_status_codes_1.StatusCodes.OK).json(empresa);
+        }
+        catch (error) {
+            console.log(error);
+            res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).end();
+        }
+    });
+}
+exports.default = {
+    add
+};
