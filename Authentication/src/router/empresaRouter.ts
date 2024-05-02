@@ -3,6 +3,6 @@ import empresaController from "../controllers/empresaController";
 
 const router = Router();
 
-router.post('/add', empresaController.add);
+router.post('/addEmpresa', empresaController.add);
 
 export default router;
